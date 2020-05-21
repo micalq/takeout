@@ -1,5 +1,5 @@
 <template>
-      <footer class="footer_guide">
+      <footer class="footer_guide" v-if="$route.meta.showFooter">
     <a href="javascript:;" class="guide_item" :class="{on:'/home'==$route.path}" @touchend="toggle('/home')">
       <span class="item_icon">
         <i class="iconfont icon-waimai"></i>
@@ -31,7 +31,8 @@ export default {
     methods: {
         toggle(path){
           this.$router.replace(path)
-        }
+        },
+        
     }
 }
 </script>

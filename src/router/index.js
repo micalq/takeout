@@ -6,10 +6,11 @@ Vue.use(VueRouter)
 
   const routes = [
     {path:"*/",redirect: "/home"},
-    {path:"/home",component:()=>import("@/pages/Home/Home")},
-    {path:"/detail",component:()=>import("@/pages/Detail/Detail")},
-    {path:"/order",component:()=>import("@/pages/Order/Order")},
-    {path:"/search",component:()=>import("@/pages/Search/Search")},
+    {path:"/home",component:()=>import("@/pages/Home/Home"),meta:{showFooter:true}},
+    {path:"/detail",component:()=>import("@/pages/Detail/Detail"),meta:{showFooter:true}},
+    {path:"/order",component:()=>import("@/pages/Order/Order"),meta:{showFooter:true}},
+    {path:"/search",component:()=>import("@/pages/Search/Search"),meta:{showFooter:true}},
+    {path:"/login",component:()=>import("@/pages/Login/Login")},
  
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   
