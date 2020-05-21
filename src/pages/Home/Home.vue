@@ -13,7 +13,7 @@
         </Header>
         <!--首页导航-->
         <nav class="msite_nav">
-          <div class="swiper-container">
+          <div class="swiper-container" v-swiper:mySwiper="swiperOption">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <a href="javascript:" class="link_to_food">
@@ -117,7 +117,7 @@
               </div>
             </div>
             <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination"> </div>
           </div>
         </nav>
         <!--首页附近商家-->
@@ -314,12 +314,23 @@
 </template>
 <script>
 import Header from '@/components/Header/Header'
+import { directive} from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 export default {
     data() {
         return {
-            
+            swiperOption: {
+          pagination: {
+            el: '.swiper-pagination',
+            clickable:true,
+          },
+          // Some Swiper option/callback...
+        }
         }
     },
+    directives: {
+    swiper: directive
+  },
     components:{
         Header,
     }
