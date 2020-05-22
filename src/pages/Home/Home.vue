@@ -9,7 +9,6 @@
            <span class="header_login" slot="right">
             <span class="header_login_text">登录|注册</span>
           </span>
-
         </Header>
         <!--首页导航-->
         <nav class="msite_nav">
@@ -40,9 +39,7 @@
           </div>
         </div>
       </section>
-   
     </div>
-    
 </template>
 <script>
 import Header from '@/components/Header/Header'
@@ -59,7 +56,6 @@ export default {
             el: '.swiper-pagination',
             clickable:true,
           },
-          // Some Swiper option/callback...
         }
         }
     },
@@ -136,5 +132,4 @@ export default {
               .swiper-pagination
                 >span.swiper-pagination-bullet-active
                   background #02a774
-         
 </style>
