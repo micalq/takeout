@@ -5,8 +5,22 @@
   </div>
 </template>
 <script>
-import Footer from '@/components/Footer/Footer'
+import Footer from '@/components/Footer/Footer';
+// import { reqFoodList } from "./api";
+import { mapActions } from "vuex";
 export default {
+ /* async mounted() {
+    const res=await reqFoodList()
+    console.log(res)
+  }, */
+    mounted() {//vuex数据是全局可见的
+    this.getAddress()
+    this.getFoodList()
+    this.getShopList()
+    },
+    methods: {
+      ...mapActions(['getAddress','getFoodList','getShopList'])
+    },
   components:{
     Footer,
   }
