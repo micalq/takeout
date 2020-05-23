@@ -11,7 +11,7 @@ Vue.use(VueRouter)
     {path:"/order",component:()=>import("@/pages/Order/Order"),meta:{showFooter:true}},
     {path:"/search",component:()=>import("@/pages/Search/Search"),meta:{showFooter:true}},
     {path:"/login",component:()=>import("@/pages/Login/Login")},
- 
+    {path:""}
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   
 ]

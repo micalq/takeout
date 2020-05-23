@@ -13,10 +13,10 @@ export const reqSearchShopList=(keyword,geohash)=>ajax(BaseUrl+"/search_shops",{
 // 5、获取一次性验证码
 export const reqCode=()=>ajax(BaseUrl+"/captcha")
 // 6、用户名密码登陆
-export const reqLogin=(name ,pwd,captcha)=>ajax(BaseUrl+"/login_pwd",{name ,pwd,captcha},'POST')
+export const reqLogin=(name,pwd,captcha)=>ajax(BaseUrl+"/login_pwd",{name,pwd,captcha},'POST')
 // 7、发送短信验证码
 export const reqPhone=(phone)=>ajax(BaseUrl+"/sendcode",{phone})
-// 8、手机号验证码登陆
+// 8、手机号短信验证码登陆
 export const reqPhoneCode=(phone,code)=>ajax(BaseUrl+"/login_sms",{phone,code},'POST')
 // 9、根据会话获取用户信息
 export const reqUserInfo=()=>ajax(BaseUrl+"/userinfo")
