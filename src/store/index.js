@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-import { reqAddress ,reqFoodList,reqShopList,reqShopGoods,reqShopRatings,reqShopInfo} from "../api";
+import { reqAddress ,reqFoodList,reqShopList,reqShopGoods,reqShopRatings,reqShopInfo,reqSearchShopList} from "../api";
 export default new Vuex.Store({
   state: {
     latidute:40.10038,//纬度
@@ -13,7 +13,8 @@ export default new Vuex.Store({
     shopGoods:[],//食物
     shopRatings:[],//评价
     shopInfo:{},//信息
-    cartFoods:[]//购物车食物列表
+    cartFoods:[],//购物车食物列表
+    searchShops:[],//搜索商家信息
   },
     getters: {
       totalCount(state){//总数
@@ -67,6 +68,9 @@ export default new Vuex.Store({
       clearcart(state){
         state.cartFoods.forEach(item=>item.count=0)//把数量置为0
         state.cartFoods=[]
+      },
+      shopList(state,searchShops){
+        state.searchShops=searchShops
       }
   },
   actions: {//提交mutation
@@ -101,7 +105,7 @@ export default new Vuex.Store({
             callback && callback()//通知Shopgoods更新数据
         }
       },
-      async getShopRatings({commit},cb){
+      async getShopRatings({commit},cb){//获取商家评价
         const res=await reqShopRatings()
         if (res.code==0) {
           const shopratings=res.data
@@ -109,11 +113,19 @@ export default new Vuex.Store({
         }
         cb && cb()
       },
-      async getShopInfo({commit}){
+      async getShopInfo({commit}){//获取商家信息
         const res=await reqShopInfo()
         if (res.code==0) {
           const shopinfo=res.data
             commit("shopInfo",shopinfo)
+        }
+      },
+      async getSearchShops({state,commit},searchWord){//获取搜索商家信息
+      const geohash=state.latidute+","+state.longitude;
+        const res=await reqSearchShopList(searchWord,geohash);
+        if (res.code==0) {
+          const searchShops=res.data
+          commit("shopList",searchShops)
         }
       },
       updateCount({commit},{type,foods}){//更新食物数量  注意：不可以和commit一起传
