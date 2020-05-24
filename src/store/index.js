@@ -21,6 +21,9 @@ export default new Vuex.Store({
       },
       totalPrice(state){//总价
         return state.cartFoods.reduce((preTotal,foods)=>preTotal+foods.count*foods.price,0)
+      },
+      satisfied(state){//计算满意信息数量
+        return state.shopRatings.reduce((preTotal,rating)=>preTotal+(rating.rateType==0?1:0),0)
       }
     },
   mutations: {//更改state数据
@@ -98,12 +101,13 @@ export default new Vuex.Store({
             callback && callback()//通知Shopgoods更新数据
         }
       },
-      async getShopRatings({commit}){
+      async getShopRatings({commit},cb){
         const res=await reqShopRatings()
         if (res.code==0) {
           const shopratings=res.data
             commit("shopRatings",shopratings)
         }
+        cb && cb()
       },
       async getShopInfo({commit}){
         const res=await reqShopInfo()
