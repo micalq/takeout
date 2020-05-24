@@ -22,3 +22,10 @@ export const reqPhoneCode=(phone,code)=>ajax(BaseUrl+"/login_sms",{phone,code},'
 export const reqUserInfo=()=>ajax(BaseUrl+"/userinfo")
 // 10、用户登出
 export const reqLoginOut=()=>ajax(BaseUrl+"/logout")
+//11、获取食物信息
+export  const reqShopGoods=()=>ajax("/goods")
+//12、获取商家评价
+export  const reqShopRatings=()=>ajax("/ratings")
+//13、获取商家信息
+export  const reqShopInfo=()=>ajax("/info")
+

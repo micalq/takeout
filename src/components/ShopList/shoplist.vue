@@ -1,7 +1,7 @@
 <template>
     <div>
           <ul class="shop_list" v-if="shops.length">
-              <li class="shop_li border-1px" v-for="(item) in shops" :key="item.id">
+              <li class="shop_li border-1px" v-for="(item) in shops" :key="item.id" @touchend="$router.push('/shop')">
                 <a>
                   <div class="shop_left">
                     <img class="shop_img" src="../../assets/images/shop/2.jpg">

@@ -11,7 +11,12 @@ Vue.use(VueRouter)
     {path:"/order",component:()=>import("@/pages/Order/Order"),meta:{showFooter:true}},
     {path:"/search",component:()=>import("@/pages/Search/Search"),meta:{showFooter:true}},
     {path:"/login",component:()=>import("@/pages/Login/Login")},
-    {path:""}
+    {path:"/shop",component:()=>import("@/pages/Shop/Shop"),children:[
+      {path:"",redirect: "/shop/goods"},
+      {path:"/shop/goods",component:()=>import("@/pages/Shop/Shopgoods/Shopgoods")},
+      {path:"/shop/rating",component:()=>import("@/pages/Shop/Shoprating/Shoprating")},
+      {path:"/shop/info",component:()=>import("@/pages/Shop/Shopinfo/Shopinfo")},
+    ]}
     // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   
 ]
