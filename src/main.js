@@ -7,15 +7,19 @@ import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css' 
 import "./mock/mockServer"
 import loading from "./assets/images/loading/loading.gif"
-import moment from 'moment'//时间格式化
+// import moment from 'moment'//时间格式化
+import format from 'date-fns/format'//轻量级时间格式化
 Vue.config.productionTip = false
 Vue.use(Mint)
 Vue.use(VueLazyload,{
   // loading:require("./assets/images/loading/loading.gif")
   loading
 })
-Vue.filter('dateformat',(value)=>{
+/* Vue.filter('dateformat',(value)=>{
   return  moment(value).format('YYYY-MM-DD HH:mm:ss')
+}) */
+Vue.filter('dateformat',(value,formatstr='yyyy-MM-dd HH:mm:ss')=>{
+  return  format(value,formatstr)
 })
 new Vue({
   router,
